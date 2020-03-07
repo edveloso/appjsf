@@ -3,6 +3,7 @@ package web.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.model.DataModel;
@@ -17,23 +18,41 @@ public class ProdutoBean {
 
 	private DataModel<Produto> produtos;
 	
+	@PostConstruct
+	public void init() {
+		lista = new ArrayList<Produto>();
+		lista.add(new Produto("Iphone", 9000.0));
+		lista.add(new Produto("Xiaomi", 200.0));
+	}
+	
+	public Produto getProduto() {
+		return produto;
+	}
+	
+	
+	//actions
+	
 	public String adicionaForm() {
 		produto = new Produto();		
 		return "produto_form";
 	}
-
-	public Produto getProduto() {
-		return produto;
+	
+	public String excluirProduto() {
+		//A lista de produtos do Datamodel é recuperada no getRowData
+		//a partir daí conseguimos ter exatamente a linha clicada
+		Produto p = (Produto) (produtos.getRowData());
+		lista.remove(p);
+		
+		return "home";
 	}
 
+	
+	//gets e sets
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
 
 	public DataModel<Produto> getProdutos() {
-		lista = new ArrayList<Produto>();
-		lista.add(new Produto("Iphone", 9000.0));
-		lista.add(new Produto("Xiaomi", 200.0));
 		produtos = new ListDataModel<Produto>(lista);
 		return produtos;
 	}
