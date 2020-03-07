@@ -28,7 +28,7 @@
     	     value="Nome"
     	  ></h:outputLabel>
     	<h:inputText value="#{produtoBean.produto.nome}" >
-    	<f:validateRequired disabled="true" ></f:validateRequired>
+    	   
     	</h:inputText>
     
     	
@@ -36,7 +36,7 @@
     	     value="Preço"
     	  ></h:outputLabel>
     	<h:inputText value="#{produtoBean.produto.preco}" >
-    	<f:convertNumber minFractionDigits="2" locale="pt_BR"/>
+    	<f:convertNumber type="currency" currencySymbol="R$" locale="pt_BR"/>
     	</h:inputText>   
     	   
     	   <h:commandButton

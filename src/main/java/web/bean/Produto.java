@@ -1,7 +1,14 @@
 package web.bean;
 
+import java.util.Date;
+
 public class Produto {
 
+	
+	public static void main(String[] args) {
+		System.out.println(new Date());
+	}
+	
 	private String nome;
 	
 	private Double preco;

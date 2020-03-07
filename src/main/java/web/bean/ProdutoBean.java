@@ -32,6 +32,14 @@ public class ProdutoBean {
 	
 	//actions
 	
+	
+	public String editarProdutoForm() {
+		produto = (Produto) (produtos.getRowData());
+		
+		return "produto_edit";
+	}
+	
+	
 	public String salvarProduto() {
 		lista.add(produto);
 		
