@@ -5,15 +5,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ProdutoBean {
 
-	private Produto produto;
+	private Produto produto = new Produto();
 	private static List<Produto> lista;
 
 	private DataModel<Produto> produtos;
@@ -32,6 +32,12 @@ public class ProdutoBean {
 	
 	//actions
 	
+	public String salvarProduto() {
+		lista.add(produto);
+		
+		return "home";
+	}
+	
 	public String adicionaForm() {
 		produto = new Produto();		
 		return "produto_form";
@@ -43,6 +49,10 @@ public class ProdutoBean {
 		Produto p = (Produto) (produtos.getRowData());
 		lista.remove(p);
 		
+		return "home";
+	}
+	
+	public String listarProdutos() {
 		return "home";
 	}
 
