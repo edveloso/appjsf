@@ -10,7 +10,19 @@
 </head>
 <body>
   
-     <h:outputText value="#{helloBean.mensagem}" ></h:outputText>
+     
+     <h3>Lista de produtos</h3>
+     
+     <h:form>
+         <h:commandLink 
+         			value="Novo Produto"  
+         			action="#{produtoBean.adicionaForm}"  >
+         </h:commandLink>
+     </h:form>
+
+	<h:outputText value="Listagem" ></h:outputText>
+	
+     
 
 </body>
 </html>
